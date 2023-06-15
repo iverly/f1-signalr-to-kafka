@@ -26,3 +26,26 @@ boostrap().catch((err) => {
   logger.error(err);
   process.exit(1);
 });
+
+process.on('SIGINT', async () => {
+  logger.info('Stopping application ...');
+
+  try {
+    logger.info('Stopping watcher on data file ...');
+    tail.getWatcherInstance().unwatch();
+    logger.info('Watcher stopped');
+  } catch (err) {
+    logger.error(`Failed to stop watcher: ${err.message}`);
+  }
+
+  try {
+    logger.info('Disconnecting from kafka ...');
+    await kafka.getProducer().disconnect();
+    logger.info('Disconnected from kafka');
+  } catch (err) {
+    logger.error(`Failed to disconnect from kafka: ${err.message}`);
+  }
+
+  logger.info('Application stopped');
+  process.exit(0);
+});

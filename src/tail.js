@@ -50,4 +50,5 @@ const start = () => {
 module.exports = {
   init,
   start,
+  getWatcherInstance,
 };
