@@ -10,6 +10,18 @@ services:
     volumes:
       - ./f1-events.txt:/tmp/f1-events.txt
 
+  exporter:
+    image: ghcr.io/iverly/f1-signalr-to-kafka-exporter:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - EXPORTER_FILE_PATH=/tmp/f1-events.txt
+      - EXPORTER_KAFKA_BROKER=kafka:19092
+    volumes:
+      - ./f1-events.txt:/tmp/f1-events.txt
+
   kafka:
     image: "bitnami/kafka:3.4.0"
     restart: unless-stopped
