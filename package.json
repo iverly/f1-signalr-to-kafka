@@ -1,0 +1,18 @@
+{
+  "name": "f1-signalr-to-kafka",
+  "version": "1.0.0",
+  "description": "Publish SignalR live data from fastf1 to a Kafka topic.",
+  "scripts": {
+    "lint": "eslint"
+  },
+  "repository": "git@github.com:iverly/f1-signalr-to-kafka.git",
+  "author": "iverly <github@iverly.net>",
+  "license": "Apache2.0",
+  "devDependencies": {
+    "eslint": "^8.42.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "prettier": "^2.8.8"
+  }
+}
