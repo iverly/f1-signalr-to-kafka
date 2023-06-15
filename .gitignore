@@ -207,3 +207,6 @@ GRTAGS
 GSYMS
 GTAGS
 TAGS
+
+# custom files
+f1-events.txt
