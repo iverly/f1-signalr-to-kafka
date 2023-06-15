@@ -1,6 +1,15 @@
 version: '3'
 
 services:
+  importer:
+    image: ghcr.io/iverly/f1-signalr-to-kafka-importer:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.importer
+    restart: unless-stopped
+    volumes:
+      - ./f1-events.txt:/tmp/f1-events.txt
+
   kafka:
     image: "bitnami/kafka:3.4.0"
     restart: unless-stopped
