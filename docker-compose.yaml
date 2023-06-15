@@ -14,7 +14,7 @@ services:
     image: ghcr.io/iverly/f1-signalr-to-kafka-exporter:latest
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.exporter
     restart: unless-stopped
     environment:
       - EXPORTER_FILE_PATH=/tmp/f1-events.txt
